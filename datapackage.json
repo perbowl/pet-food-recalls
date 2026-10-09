@@ -1,0 +1,415 @@
+{
+    "name": "perbowl-pet-food-recalls",
+    "title": "US Dog and Cat Food Recalls (FDA, 2012 onward)",
+    "description": "Every dog and cat food recall the US FDA has classified since 8 June 2012, with products, barcodes, lot codes, reason categories and reviewed links to brands, makers and plants.",
+    "version": "2026-10-09",
+    "homepage": "https://perbowl.com/recalls/dataset/",
+    "licenses": [
+        {
+            "name": "CC-BY-4.0",
+            "path": "https://creativecommons.org/licenses/by/4.0/",
+            "title": "Creative Commons Attribution 4.0"
+        }
+    ],
+    "sources": [
+        {
+            "title": "FDA Data Dashboard: Recalls",
+            "path": "https://datadashboard.fda.gov/oii/cd/recalls.htm"
+        },
+        {
+            "title": "FDA Enforcement Reports",
+            "path": "https://www.accessdata.fda.gov/scripts/ires/"
+        }
+    ],
+    "contributors": [
+        {
+            "title": "Jeremiah Say",
+            "role": "author",
+            "path": "https://perbowl.com/about/jeremiah-say/"
+        },
+        {
+            "title": "PerBowl",
+            "role": "publisher",
+            "path": "https://perbowl.com/"
+        }
+    ],
+    "resources": [
+        {
+            "name": "recalls",
+            "path": "recalls.csv",
+            "title": "Recalls",
+            "description": "One row per recall event: a firm's recall of one or more products, as FDA classified it.",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "event_id",
+                        "type": "integer",
+                        "format": "default",
+                        "description": "FDA recall event number (Enforcement Report). Joins every file."
+                    },
+                    {
+                        "name": "classified_date",
+                        "type": "date",
+                        "format": "default",
+                        "description": "Date FDA classified the recall (earliest across its products)."
+                    },
+                    {
+                        "name": "initiated_date",
+                        "type": "date",
+                        "format": "default",
+                        "description": "Date the firm started the recall (earliest across its products), from FDA's Enforcement Report."
+                    },
+                    {
+                        "name": "terminated_date",
+                        "type": "date",
+                        "format": "default",
+                        "description": "Date FDA ended the recall: the latest product termination, filled only once every product is terminated."
+                    },
+                    {
+                        "name": "fda_class",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Class I (most serious), Class II or Class III."
+                    },
+                    {
+                        "name": "status",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Active if any product is still ongoing at FDA, else Closed."
+                    },
+                    {
+                        "name": "firm",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Recalling firm, as FDA records it."
+                    },
+                    {
+                        "name": "firm_city",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Recalling firm's city (FDA)."
+                    },
+                    {
+                        "name": "firm_state",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Recalling firm's state (FDA)."
+                    },
+                    {
+                        "name": "species",
+                        "type": "string",
+                        "format": "default",
+                        "description": "dog, cat or both (dog;cat), from the product descriptions. Empty when no product names either."
+                    },
+                    {
+                        "name": "reason_category",
+                        "type": "string",
+                        "format": "default",
+                        "description": "PerBowl's category for the reason, e.g. Salmonella, Excess vitamin D. Several are joined with \";\"."
+                    },
+                    {
+                        "name": "reason_text",
+                        "type": "string",
+                        "format": "default",
+                        "description": "FDA's reason for recall, verbatim."
+                    },
+                    {
+                        "name": "distribution",
+                        "type": "string",
+                        "format": "default",
+                        "description": "FDA's distribution pattern, verbatim (shortened to 400 characters)."
+                    },
+                    {
+                        "name": "product_count",
+                        "type": "integer",
+                        "format": "default",
+                        "description": "Number of product rows in products.csv for this event."
+                    },
+                    {
+                        "name": "maker",
+                        "type": "string",
+                        "format": "default",
+                        "description": "The pet food maker this recall is linked to. Empty unless the link has evidence."
+                    },
+                    {
+                        "name": "maker_evidence",
+                        "type": "string",
+                        "format": "default",
+                        "description": "name = the recalling firm is that maker (reviewed name match); plant = same FDA facility number as one of its licensed plants."
+                    },
+                    {
+                        "name": "plant",
+                        "type": "string",
+                        "format": "default",
+                        "description": "The licensed plant linked to this recall, if any, as \"Maker, City, ST\"."
+                    },
+                    {
+                        "name": "plant_evidence",
+                        "type": "string",
+                        "format": "default",
+                        "description": "fei = same FDA facility number; trace = a published investigation (see recall_traces.csv)."
+                    },
+                    {
+                        "name": "maker_url",
+                        "type": "string",
+                        "format": "uri",
+                        "description": "The maker's page on PerBowl."
+                    },
+                    {
+                        "name": "plant_url",
+                        "type": "string",
+                        "format": "uri",
+                        "description": "The plant's page on PerBowl."
+                    },
+                    {
+                        "name": "brands",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Brands linked after a person read the product list (see recall_brands.csv). Joined with \";\"."
+                    },
+                    {
+                        "name": "fda_url",
+                        "type": "string",
+                        "format": "uri",
+                        "description": "FDA's record for the first product in the event."
+                    },
+                    {
+                        "name": "perbowl_url",
+                        "type": "string",
+                        "format": "uri",
+                        "description": "The recall's page on PerBowl."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "products",
+            "path": "products.csv",
+            "title": "Recalled products",
+            "description": "One row per recalled product in FDA's record.",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "event_id",
+                        "type": "integer",
+                        "format": "default",
+                        "description": "FDA recall event number."
+                    },
+                    {
+                        "name": "product_no",
+                        "type": "integer",
+                        "format": "default",
+                        "description": "Position of the product within its event (1, 2, ...)."
+                    },
+                    {
+                        "name": "description",
+                        "type": "string",
+                        "format": "default",
+                        "description": "FDA's product description, verbatim (shortened to 900 characters)."
+                    },
+                    {
+                        "name": "upcs",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Barcodes (UPC/EAN) found in the description, digits only, joined with \";\"."
+                    },
+                    {
+                        "name": "lot_codes",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Lot codes, best-by dates and other codes from FDA's Enforcement Report \"Code Info\" field."
+                    },
+                    {
+                        "name": "fda_class",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Class I, II or III for this product."
+                    },
+                    {
+                        "name": "status",
+                        "type": "string",
+                        "format": "default",
+                        "description": "FDA status for this product: Ongoing, Completed or Terminated."
+                    },
+                    {
+                        "name": "recall_number",
+                        "type": "string",
+                        "format": "default",
+                        "description": "FDA recall number, e.g. V-166-2012 (V = veterinary)."
+                    },
+                    {
+                        "name": "initiated_date",
+                        "type": "date",
+                        "format": "default",
+                        "description": "Date the firm started this product's recall."
+                    },
+                    {
+                        "name": "report_date",
+                        "type": "date",
+                        "format": "default",
+                        "description": "Date the recall appeared in FDA's weekly Enforcement Report."
+                    },
+                    {
+                        "name": "terminated_date",
+                        "type": "date",
+                        "format": "default",
+                        "description": "Date FDA terminated this product's recall. Empty while it is open."
+                    },
+                    {
+                        "name": "quantity",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Amount of product recalled, as the firm reported it (units vary: cases, bags, pounds)."
+                    },
+                    {
+                        "name": "voluntary",
+                        "type": "string",
+                        "format": "default",
+                        "description": "FDA's voluntary or mandated field, verbatim."
+                    },
+                    {
+                        "name": "firm_notified_by",
+                        "type": "string",
+                        "format": "default",
+                        "description": "How the firm first told its customers or the public (letter, telephone, press release, ...)."
+                    },
+                    {
+                        "name": "fda_url",
+                        "type": "string",
+                        "format": "uri",
+                        "description": "FDA's record for this product."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "recall_brands",
+            "path": "recall_brands.csv",
+            "title": "Recall to brand links",
+            "description": "One row per brand a person confirmed in a recall's product list. A word match alone never makes a link.",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "event_id",
+                        "type": "integer",
+                        "format": "default",
+                        "description": "FDA recall event number."
+                    },
+                    {
+                        "name": "brand",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Brand name on PerBowl."
+                    },
+                    {
+                        "name": "perbowl_url",
+                        "type": "string",
+                        "format": "uri",
+                        "description": "The brand's page on PerBowl."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "excluded",
+            "path": "excluded.csv",
+            "title": "Rows left out",
+            "description": "Every FDA veterinary recall row the dog-and-cat filter dropped, with the reason, so the filter can be checked.",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "event_id",
+                        "type": "integer",
+                        "format": "default",
+                        "description": "FDA recall event number."
+                    },
+                    {
+                        "name": "product_id",
+                        "type": "integer",
+                        "format": "default",
+                        "description": "FDA product number."
+                    },
+                    {
+                        "name": "classified_date",
+                        "type": "date",
+                        "format": "default",
+                        "description": "Date FDA classified it."
+                    },
+                    {
+                        "name": "firm",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Recalling firm (FDA)."
+                    },
+                    {
+                        "name": "description",
+                        "type": "string",
+                        "format": "default",
+                        "description": "FDA's product description (shortened to 300 characters)."
+                    },
+                    {
+                        "name": "excluded_because",
+                        "type": "string",
+                        "format": "default",
+                        "description": "Why it is not in recalls.csv."
+                    },
+                    {
+                        "name": "fda_url",
+                        "type": "string",
+                        "format": "uri",
+                        "description": "FDA's record."
+                    }
+                ]
+            }
+        },
+        {
+            "name": "recall_traces",
+            "path": "recall_traces.csv",
+            "title": "Recall to plant traces",
+            "description": "Plants named by a published investigation (for example a CDC report), not by FDA's recall record.",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "event_id",
+                        "type": "integer",
+                        "format": "default",
+                        "description": "FDA recall event number."
+                    },
+                    {
+                        "name": "plant",
+                        "type": "string",
+                        "format": "default",
+                        "description": "The plant, as \"Maker, City, ST\"."
+                    },
+                    {
+                        "name": "source_title",
+                        "type": "string",
+                        "format": "default",
+                        "description": "The investigation that names the plant."
+                    },
+                    {
+                        "name": "source_url",
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Where to read it."
+                    }
+                ]
+            }
+        }
+    ]
+}
