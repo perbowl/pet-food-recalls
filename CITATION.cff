@@ -5,10 +5,13 @@ title: "US Dog and Cat Food Recalls (FDA, 2012 onward)"
 version: "2026-10-09"
 date-released: "2026-10-09"
 license: CC-BY-4.0
+doi: "10.5281/zenodo.23255873"
 url: "https://perbowl.com/recalls/dataset/"
+repository: "https://github.com/perbowl/pet-food-recalls"
 authors:
   - family-names: Say
     given-names: Jeremiah
+    orcid: "https://orcid.org/0009-0009-2025-7691"
     website: "https://perbowl.com/about/jeremiah-say/"
   - name: PerBowl
     website: "https://perbowl.com/"

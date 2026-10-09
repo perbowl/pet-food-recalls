@@ -9,6 +9,8 @@ FDA publishes these recalls only through its Data Dashboard and Enforcement Repo
 - barcodes (UPC/EAN) found in 607 product descriptions
 - links to brands, makers and plants, each reviewed and backed by evidence
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23255873.svg)](https://doi.org/10.5281/zenodo.23255873)
+
 **Version 2026-10-09** · FDA records as loaded on 2026-10-05 · Dataset page: https://perbowl.com/recalls/dataset/ · Search the recalls: https://perbowl.com/recalls/
 
 ## Files
@@ -127,9 +129,9 @@ All files are UTF-8 CSV with a header row. `event_id` joins them. `datapackage.j
 
 ## How to cite
 
-> PerBowl (2026). US Dog and Cat Food Recalls (FDA, 2012 onward), version 2026-10-09. https://perbowl.com/recalls/dataset/
+> PerBowl (2026). US Dog and Cat Food Recalls (FDA, 2012 onward), version 2026-10-09 [Data set]. https://perbowl.com/recalls/dataset/. https://doi.org/10.5281/zenodo.23255873
 
-Use it for anything, including commercially, under CC BY 4.0: credit PerBowl and link to https://perbowl.com/recalls/dataset/. The FDA fields are in the public domain. See `LICENSE.md` and `CITATION.cff`.
+Use it for anything, including commercially, under CC BY 4.0: credit PerBowl and link to https://perbowl.com/recalls/dataset/ (or cite the DOI). The FDA fields are in the public domain. See `LICENSE.md` and `CITATION.cff`.
 
 ## Sources
 
