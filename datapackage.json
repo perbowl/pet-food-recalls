@@ -2,7 +2,7 @@
     "name": "perbowl-pet-food-recalls",
     "title": "US Dog and Cat Food Recalls (FDA, 2012 onward)",
     "description": "Every dog and cat food recall the US FDA has classified since 8 June 2012, with products, barcodes, lot codes, reason categories and reviewed links to brands, makers and plants.",
-    "version": "2026-10-09",
+    "version": "2026-10-10",
     "homepage": "https://perbowl.com/recalls/dataset/",
     "licenses": [
         {

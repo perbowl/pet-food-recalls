@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this dataset, please cite it as below and link to https://perbowl.com/recalls/dataset/"
 type: dataset
 title: "US Dog and Cat Food Recalls (FDA, 2012 onward)"
-version: "2026-10-09"
-date-released: "2026-10-09"
+version: "2026-10-10"
+date-released: "2026-10-10"
 license: CC-BY-4.0
 doi: "10.5281/zenodo.23255873"
 url: "https://perbowl.com/recalls/dataset/"

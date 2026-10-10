@@ -1,21 +1,21 @@
 # US Dog and Cat Food Recalls (FDA, 2012 onward)
 
-Every dog and cat food recall the US Food and Drug Administration has classified since 8 June 2012: 266 recalls covering 1,232 products, from 2012-07-11 to 2026-09-24. Published by [PerBowl](https://perbowl.com/), which builds pet food records from public sources.
+Every dog and cat food recall the US Food and Drug Administration has classified since 8 June 2012: 271 recalls covering 1,265 products, from 2012-07-11 to 2026-09-24. Published by [PerBowl](https://perbowl.com/), which builds pet food records from public sources.
 
 FDA publishes these recalls only through its Data Dashboard and Enforcement Report search, with no bulk download for pet food. This dataset puts them in one place and adds:
 
 - a reason category for each recall (Salmonella, excess vitamin D, pentobarbital, ...) and the species
-- lot codes for 1,232 products, from FDA's Enforcement Reports
-- barcodes (UPC/EAN) found in 607 product descriptions
+- lot codes for 1,265 products, from FDA's Enforcement Reports
+- barcodes (UPC/EAN) found in 625 product descriptions
 - links to brands, makers and plants, each reviewed and backed by evidence
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23255873.svg)](https://doi.org/10.5281/zenodo.23255873)
 
-**Version 2026-10-09** · FDA records as loaded on 2026-10-05 · Dataset page: https://perbowl.com/recalls/dataset/ · Search the recalls: https://perbowl.com/recalls/
+**Version 2026-10-10** · FDA records as loaded on 2026-10-05 · Dataset page: https://perbowl.com/recalls/dataset/ · Search the recalls: https://perbowl.com/recalls/
 
 ## Files
 
-### `recalls.csv` (266 rows)
+### `recalls.csv` (271 rows)
 
 One row per recall event: a firm's recall of one or more products, as FDA classified it.
 
@@ -45,7 +45,7 @@ One row per recall event: a firm's recall of one or more products, as FDA classi
 | `fda_url` | url | FDA's record for the first product in the event. |
 | `perbowl_url` | url | The recall's page on PerBowl. |
 
-### `products.csv` (1,232 rows)
+### `products.csv` (1,265 rows)
 
 One row per recalled product in FDA's record.
 
@@ -67,7 +67,7 @@ One row per recalled product in FDA's record.
 | `firm_notified_by` | string | How the firm first told its customers or the public (letter, telephone, press release, ...). |
 | `fda_url` | url | FDA's record for this product. |
 
-### `recall_brands.csv` (63 rows)
+### `recall_brands.csv` (65 rows)
 
 One row per brand a person confirmed in a recall's product list. A word match alone never makes a link.
 
@@ -77,7 +77,7 @@ One row per brand a person confirmed in a recall's product list. A word match al
 | `brand` | string | Brand name on PerBowl. |
 | `perbowl_url` | url | The brand's page on PerBowl. |
 
-### `excluded.csv` (2,428 rows)
+### `excluded.csv` (2,395 rows)
 
 Every FDA veterinary recall row the dog-and-cat filter dropped, with the reason, so the filter can be checked.
 
@@ -110,10 +110,10 @@ Built and checked by Jeremiah Say (https://perbowl.com/about/jeremiah-say/).
 |---|---:|
 | FDA veterinary recall rows, June 2012 on | 3,660 |
 | Left out: animal drug, device or non-food product | −1,277 |
-| Left out: not dog or cat food | −554 |
+| Left out: not dog or cat food | −521 |
 | Left out: livestock feed or food for other animals | −439 |
 | Left out: recalled by an animal-drug maker or pharmacy | −158 |
-| **Kept: dog and cat food and treats** (266 recalls) | **1,232** |
+| **Kept: dog and cat food and treats** (271 recalls) | **1,265** |
 
 Every row left out is in `excluded.csv` with its reason. Recall records come from FDA's Data Dashboard export; lot codes, recall numbers, dates and quantities from FDA's Enforcement Report exports, matched by event and product description. Reason categories and species come from fixed word rules; brand, maker and plant links are reviewed one by one.
 
@@ -129,7 +129,7 @@ All files are UTF-8 CSV with a header row. `event_id` joins them. `datapackage.j
 
 ## How to cite
 
-> PerBowl (2026). US Dog and Cat Food Recalls (FDA, 2012 onward), version 2026-10-09 [Data set]. https://perbowl.com/recalls/dataset/. https://doi.org/10.5281/zenodo.23255873
+> PerBowl (2026). US Dog and Cat Food Recalls (FDA, 2012 onward), version 2026-10-10 [Data set]. https://perbowl.com/recalls/dataset/. https://doi.org/10.5281/zenodo.23255873
 
 Use it for anything, including commercially, under CC BY 4.0: credit PerBowl and link to https://perbowl.com/recalls/dataset/ (or cite the DOI). The FDA fields are in the public domain. See `LICENSE.md` and `CITATION.cff`.
 
